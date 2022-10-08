@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateConfigService } from '../../../services/translate-config.service';
 
 @Component({
   selector: 'app-nav-menu',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavMenuComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private TranslateConfigService: TranslateConfigService) { }
+  isExpanded = false;
   ngOnInit(): void {
   }
-
+  toggle() {
+    this.isExpanded = !this.isExpanded;
+  }
+  changeLang(lang: string){
+    this.TranslateConfigService.changeLanguage(lang);
+  }
 }

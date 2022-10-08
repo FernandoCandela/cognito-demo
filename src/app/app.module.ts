@@ -1,11 +1,19 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
-import { AppRoutingModule } from './app-routing/app-routing.module';
 import { AppComponent } from './app.component';
+
+import { AppRoutingModule } from './app-routing/app-routing.module';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { PagesModule } from './pages/pages.module';
+import { AuthInterceptorService, interceptorApiRestProvider } from './interceptors/auth-interceptor.service';
 import { ComponentsModule } from './shared/components/components.module';
-import { RouterModule } from '@angular/router';
+
+
+export function rootLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -13,14 +21,19 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     HttpClientModule,
-    RouterModule,
-    BrowserModule,
+    ComponentsModule,
     PagesModule,
-    ComponentsModule,
-    ComponentsModule,
-    AppRoutingModule
+    BrowserModule,
+    AppRoutingModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: rootLoaderFactory,
+        deps: [HttpClient],
+      },
+    }),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

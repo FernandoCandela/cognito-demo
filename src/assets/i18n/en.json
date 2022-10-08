@@ -1,0 +1,51 @@
+{
+  "nav": {
+    "siniestro": "Sinister",
+    "pais": "Country",
+    "peru": "PERU"
+  },
+  "list": {
+    "titulo": "Sinister List",
+    "filtro": "Filter",
+    "registrar": "Register Sinister",
+    "fecha": "Date",
+    "compania": "Company",
+    "estimacion": "Estimate",
+    "tipo": "Type",
+    "acciones": "Actions",
+    "ver": "See",
+    "editar": "Edit",
+    "eliminar": "Delete"
+  },
+  "create": {
+    "titulo": "Add Sinister",
+    "date": "Choose a date",
+    "direccion": "Address",
+    "compania": "Company",
+    "estimacion": "Estimate",
+    "tipo": "Select the type of sinister",
+    "relato": "Story",
+    "enviar": "Submit",
+    "tipo1": "Total sinister",
+    "tipo2": "Partial sinister"
+  },
+  "view": {
+    "estimacion": "Estimate",
+    "direccion": "Address",
+    "relato": "Story",
+    "bienes": "Affected assets",
+    "volver": "Back"
+  },
+  "edit": {
+    "titulo": "Edit Sinister",
+    "date": "Choose a date",
+    "direccion": "Address",
+    "compania": "Company",
+    "estimacion": "Estimate",
+    "tipo": "Select the type of sinister",
+    "relato": "Story",
+    "enviar": "Submit",
+    "tipo1": "Total sinister",
+    "tipo2": "Partial sinister"
+  }
+}

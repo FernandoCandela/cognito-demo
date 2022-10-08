@@ -1,0 +1,51 @@
+{
+  "nav": {
+    "siniestro": "Siniestros",
+    "pais": "Pais",
+    "peru": "PERÚ"
+  },
+  "list": {
+    "titulo": "Lista de Siniestros",
+    "filtro": "Filtro",
+    "registrar": "Registrar Siniestro",
+    "fecha": "Fecha",
+    "compania": "Compañia",
+    "estimacion": "Estimación",
+    "tipo": "Tipo",
+    "acciones": "Acciones",
+    "ver": "Ver",
+    "editar": "Editar",
+    "eliminar": "Eliminar"
+  },
+  "create": {
+    "titulo": "Agregar Siniestro",
+    "date": "Seleccione una fecha",
+    "direccion": "Dirección",
+    "compania": "Compañia",
+    "estimacion": "Estimación",
+    "tipo": "Seleccione el tipo de siniestro",
+    "relato": "Relato",
+    "enviar": "Enviar",
+    "tipo1": "Siniestro total",
+    "tipo2": "Siniestro parcial"
+  },
+  "view": {
+    "estimacion": "Estimación",
+    "direccion": "Dirección",
+    "relato": "Relato",
+    "bienes": "Bienes afectados",
+    "volver": "Volver"
+  },
+  "edit": {
+    "titulo": "Editar Siniestro",
+    "date": "Seleccione una fecha",
+    "direccion": "Dirección",
+    "compania": "Compañia",
+    "estimacion": "Estimación",
+    "tipo": "Seleccione el tipo de siniestro",
+    "relato": "Relato",
+    "enviar": "Enviar",
+    "tipo1": "Siniestro total",
+    "tipo2": "Siniestro parcial"
+  }
+}

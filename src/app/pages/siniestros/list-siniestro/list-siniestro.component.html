@@ -1,0 +1,72 @@
+<div class="row" style="margin-top:10%;">
+
+  <div class="col-xl-12">
+      <mat-card>
+        <mat-card-header>
+            <mat-card-title translate>list.titulo</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+
+        <div class="row">
+        <div class="col-md-4">
+          <mat-form-field class="form-group ">
+            <mat-label translate>list.filtro</mat-label>
+            <input matInput (keyup)="applyFilter($event)" #input>
+          </mat-form-field>
+        </div>
+        
+        <div class="col-md-4">
+            
+        </div>
+          <div class="col-md-4">
+            <button style="width: 100% ;" mat-raised-button color="primary"
+              [routerLink]="['/create']" [innerText]="'list.registrar'| translate"></button>
+          </div>
+
+        </div>
+        <table mat-table style="text-align-last: center;" [dataSource]="dataSource" class="mat-elevation-z8">
+
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> Id </th>
+            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="fecha">
+            <th mat-header-cell *matHeaderCellDef translate> list.fecha </th>
+            <td mat-cell *matCellDef="let element"> {{element.fecha | date:'dd/MM/yyyy'}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="compania">
+            <th mat-header-cell *matHeaderCellDef translate> list.compania</th>
+            <td mat-cell *matCellDef="let element"> {{element.compania}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="estimacion">
+            <th mat-header-cell *matHeaderCellDef translate> list.estimacion </th>
+            <td mat-cell *matCellDef="let element"> {{element.estimacion| currency: 'USD' }} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="tipo">
+            <th mat-header-cell *matHeaderCellDef translate> list.tipo</th>
+            <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="acciones" >
+            <th mat-header-cell *matHeaderCellDef translate> list.acciones </th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-raised-button  style="margin-right: 10px;" color="primary" [routerLink]="['/view', element.id]" [innerText]="'list.ver'| translate"></button>
+              <button mat-raised-button style="margin-right: 10px;"color="accent" [routerLink]="['/edit', element.id]" [innerText]="'list.editar'| translate"></button>
+              <button mat-raised-button color="warn" (click)="DeletePersonal(element.id)"[innerText]="'list.eliminar'| translate"></button>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="6">No hay resultados de  "{{input.value}}"</td>
+          </tr>
+        </table>
+      </mat-card-content>
+      </mat-card>
+      
+</div>

@@ -1,0 +1,51 @@
+
+<div *ngIf="dataLoader" class="container">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title translate>edit.titulo</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+    <!-- <p>{{ siniestroForm.value | json }} {{ siniestroForm.status | json }}</p> -->
+    <form novalidate [formGroup]="siniestroForm" #fform="ngForm" (ngSubmit)="onSubmit()" class="row g-3" >
+        <mat-form-field appearance="fill" class="col-md-6">
+            <mat-label translate>edit.date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="fecha">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+        <mat-form-field appearance="fill" class="col-md-6">
+            <mat-label translate>edit.direccion</mat-label>
+          <input matInput formControlName="direccion" type="text" required>
+          <mat-error *ngIf="formErrors['direccion']">{{formErrors['direccion']}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="col-md-6">
+            <mat-label translate>edit.compania</mat-label>
+          <input matInput formControlName="compania" type="text" required>
+          <mat-error *ngIf="formErrors['compania']">{{formErrors['compania']}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill"class="col-md-6">
+            <mat-label translate>edit.estimacion</mat-label>
+          <input matInput formControlName="estimacion" type="number" pattern="[0-9]*" required>
+          <mat-error *ngIf="formErrors['estimacion']">{{formErrors['estimacion']}}</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill"  class="col-md-6">
+            <mat-label translate>edit.tipo</mat-label>
+            <mat-select disableRipple formControlName="tipo">
+              <mat-option value="1" [innerText]="'edit.tipo1'| translate"></mat-option>
+              <mat-option value="2" [innerText]="'edit.tipo2'| translate"></mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="col-md-12">
+            <mat-label translate>edit.relato</mat-label>
+            <textarea matInput formControlName="relato" rows=12></textarea>
+        </mat-form-field>
+
+        <button type="submit" mat-raised-button color="primary" [disabled]="siniestroForm.invalid" [innerText]="'edit.enviar'| translate">Submit</button>
+    </form>
+    </mat-card-content>
+</mat-card>
+  </div>

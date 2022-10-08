@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-xl-12">
+    <div *ngIf="siniestro">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{ siniestro.compania | uppercase }}</mat-card-title>
+          <mat-card-subtitle
+            >{{ siniestro.tipo }} --
+            {{ siniestro.fecha | date: "dd/MM/yyyy" }}</mat-card-subtitle
+          >
+        </mat-card-header>
+        <mat-card-content>
+          <mat-card-title>
+            <h3><strong translate>view.estimacion</strong></h3>
+          </mat-card-title>
+          <p>{{ siniestro.estimacion | currency: "USD" }}</p>
+          <mat-card-title>
+            <h3><strong translate>view.direccion</strong></h3>
+          </mat-card-title>
+          <p>{{ siniestro.direccion }}</p>
+          <mat-card-title>
+            <h3><strong translate>view.relato</strong></h3>
+          </mat-card-title>
+          <p>{{ siniestro.relato }}</p>
+
+          <mat-list>
+            <mat-card-title>
+              <h3><strong translate>view.bienes</strong></h3>
+            </mat-card-title>
+            <mat-list-item *ngFor="let bien of siniestro.bienes">
+              <h4 matLine>
+                <span> {{ bien.nombre }} </span>
+              </h4>
+              <p matLine>
+                <span> {{ bien.valor | currency: "USD" }} </span>
+              </p>
+            </mat-list-item>
+          </mat-list>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="warn" [routerLink]="['/list']" [innerText]="'view.volver'| translate">
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>
