@@ -7,7 +7,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { PagesModule } from './pages/pages.module';
-import { AuthInterceptorService, interceptorApiRestProvider } from './interceptors/auth-interceptor.service';
+import { interceptorApiRestProvider } from './interceptors/auth-interceptor.service';
 import { ComponentsModule } from './shared/components/components.module';
 
 
@@ -33,7 +33,7 @@ export function rootLoaderFactory(http: HttpClient) {
       },
     }),
   ],
-  providers: [],
+  providers: [interceptorApiRestProvider],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
