@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -9,7 +10,8 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
     NavMenuComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   exports:[
     NavMenuComponent
