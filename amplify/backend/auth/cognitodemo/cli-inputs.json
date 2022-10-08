@@ -1,10 +1,8 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "cognitodemo95e3f0f7_identitypool_95e3f0f7",
-    "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "cognit95e3f0f7",
-    "userPoolName": "cognitodemo95e3f0f7_userpool_95e3f0f7",
+    "resourceNameTruncated": "cognit29f3ba3f",
+    "userPoolName": "cognitodemousers",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -33,16 +31,23 @@
     "userpoolClientReadAttributes": [
       "email"
     ],
-    "userpoolClientLambdaRole": "cognit95e3f0f7_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "cognit29f3ba3f_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "95e3f0f7",
-    "resourceName": "cognitodemo95e3f0f7",
-    "authSelections": "identityPoolAndUserPool",
-    "useDefault": "default",
+    "sharedId": "29f3ba3f",
+    "resourceName": "cognitodemo",
+    "authSelections": "userPoolOnly",
+    "useDefault": "manual",
     "usernameAttributes": [
       "email"
     ],
+    "userPoolGroups": false,
+    "adminQueries": false,
     "triggers": {},
+    "hostedUI": true,
+    "hostedUIDomainName": "demo-app-domain",
+    "authProvidersUserPool": [],
+    "hostedUIProviderMeta": "[]",
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:4200/\",\"https://dev.d3vq34geu7hrwy.amplifyapp.com/\"],\"LogoutURLs\":[\"http://localhost:4200/\",\"https://dev.d3vq34geu7hrwy.amplifyapp.com/\"]}",
     "userPoolGroupList": [],
     "serviceName": "Cognito",
     "usernameCaseSensitive": false,

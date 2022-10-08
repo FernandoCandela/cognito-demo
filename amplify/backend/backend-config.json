@@ -7,7 +7,7 @@
     }
   },
   "auth": {
-    "cognitodemo95e3f0f7": {
+    "cognitodemo": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],

@@ -1,6 +1,7 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import Auth from '@aws-amplify/auth';
+import { CognitoHostedUIIdentityProvider } from "@aws-amplify/auth/lib/types";
 
 @Component({
   selector: 'app-login',
@@ -33,7 +34,6 @@ export class LoginComponent implements OnInit {
   }
 
   onLoginGoogle(): void {
-    Auth.federatedSignIn({customProvider: 'Google'})
+    Auth.federatedSignIn({customProvider: CognitoHostedUIIdentityProvider.Google})
   }
-
 }

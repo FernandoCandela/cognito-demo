@@ -1,25 +1,25 @@
 {
   "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-cognitodemo-dev-200230-authRole",
-      "UnauthRoleArn": "arn:aws:iam::978404210480:role/amplify-cognitodemo-dev-200230-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::978404210480:role/amplify-cognitodemo-dev-200230-authRole",
+      "AuthRoleName": "amplify-cognitodemo-dev-03727-authRole",
+      "UnauthRoleArn": "arn:aws:iam::978404210480:role/amplify-cognitodemo-dev-03727-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::978404210480:role/amplify-cognitodemo-dev-03727-authRole",
       "Region": "us-east-2",
-      "DeploymentBucketName": "amplify-cognitodemo-dev-200230-deployment",
-      "UnauthRoleName": "amplify-cognitodemo-dev-200230-unauthRole",
-      "StackName": "amplify-cognitodemo-dev-200230",
-      "StackId": "arn:aws:cloudformation:us-east-2:978404210480:stack/amplify-cognitodemo-dev-200230/e4984a40-46a4-11ed-bf63-0254aedbe2fc",
-      "AmplifyAppId": "d32l6psxvqplhp"
+      "DeploymentBucketName": "amplify-cognitodemo-dev-03727-deployment",
+      "UnauthRoleName": "amplify-cognitodemo-dev-03727-unauthRole",
+      "StackName": "amplify-cognitodemo-dev-03727",
+      "StackId": "arn:aws:cloudformation:us-east-2:978404210480:stack/amplify-cognitodemo-dev-03727/4ebdcb40-46cb-11ed-9aca-061e51de7328",
+      "AmplifyAppId": "d3vq34geu7hrwy"
     },
     "categories": {
       "hosting": {
         "amplifyhosting": {
-          "appId": "d32l6psxvqplhp",
+          "appId": "d3vq34geu7hrwy",
           "type": "manual"
         }
       },
       "auth": {
-        "cognitodemo95e3f0f7": {}
+        "cognitodemo": {}
       }
     }
   }

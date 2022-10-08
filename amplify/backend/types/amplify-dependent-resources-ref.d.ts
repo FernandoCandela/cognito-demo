@@ -1,8 +1,8 @@
 export type AmplifyDependentResourcesAttributes = {
     "auth": {
-        "cognitodemo95e3f0f7": {
-            "IdentityPoolId": "string",
-            "IdentityPoolName": "string",
+        "cognitodemo": {
+            "HostedUIDomain": "string",
+            "OAuthMetadata": "string",
             "UserPoolId": "string",
             "UserPoolArn": "string",
             "UserPoolName": "string",
