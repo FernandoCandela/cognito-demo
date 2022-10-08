@@ -17,6 +17,9 @@
           "appId": "d32l6psxvqplhp",
           "type": "manual"
         }
+      },
+      "auth": {
+        "cognitodemo95e3f0f7": {}
       }
     }
   }
