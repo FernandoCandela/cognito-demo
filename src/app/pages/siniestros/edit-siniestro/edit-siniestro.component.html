@@ -43,8 +43,14 @@
             <mat-label translate>edit.relato</mat-label>
             <textarea matInput formControlName="relato" rows=12></textarea>
         </mat-form-field>
-
-        <button type="submit" mat-raised-button color="primary" [disabled]="siniestroForm.invalid" [innerText]="'edit.enviar'| translate">Submit</button>
+        <div class="row">
+          <div  class="col-6">
+            <button mat-raised-button class="col-12" color="warn" [routerLink]="['/list']" [innerText]="'view.volver'| translate"></button>
+          </div>
+          <div  class="col-6">
+            <button type="submit" class="col-12" mat-raised-button color="primary" [disabled]="siniestroForm.invalid" [innerText]="'edit.enviar'| translate"></button>
+          </div>
+        </div>
     </form>
     </mat-card-content>
 </mat-card>
