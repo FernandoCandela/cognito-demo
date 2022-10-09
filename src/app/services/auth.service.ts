@@ -18,4 +18,15 @@ export class AuthService {
     }
     return null;
   }
+
+  public isAdmin(): boolean {
+    var token = this.getToken();
+    if (token==null) return false;
+    var payload = token.split('.')[1]; //header.payload.sign
+    var payloadDecoded = atob(payload);
+    var values = JSON.parse(payloadDecoded);
+    var roles = values[environment.ROLES_FIELD];
+    var isAdmin = roles.indexOf('ROLE_ADMIN') < 0 ? false: true;
+    return isAdmin;
+  }
 }

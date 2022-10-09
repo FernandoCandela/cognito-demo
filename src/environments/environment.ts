@@ -8,7 +8,8 @@ export const environment = {
   ACCESS_TOKEN: 'idToken',
   CLIENT_ID: '1o6csdb1i0s5donq9a6e0qosgp',
   AUTHORIZATION: 'Authorization',
-  BEARER: 'Bearer '
+  BEARER: 'Bearer ',
+  ROLES_FIELD: 'cognito:groups'
 };
 
 /*
