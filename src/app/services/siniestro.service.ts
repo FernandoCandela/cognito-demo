@@ -21,18 +21,31 @@ export class SiniestroService {
   getSiniestros(): Observable<Siniestro[]> {
     return this.http
       .get<Siniestro[]>(this.baseURL + 'siniestros')
+      .pipe(map( (response:any) =>{
+        return response.Items.sort(function (a:any, b:any) {
+          if (a.id < b.id)
+              return -1;
+          else if (a.id > b.id)
+              return 1;
+          else
+              return 0;
+      });}))
       .pipe(catchError(this.processHTTPMsgService.handleError));
   }
 
   getSiniestro(id: number): Observable<Siniestro> {
     return this.http.get<Siniestro>(this.baseURL + 'siniestros/' + id)
+      .pipe(map( (response:any) =>
+      response.Item
+      ))
       .pipe(catchError(this.processHTTPMsgService.handleError));
   }
 
   putSiniestro(siniestro: Siniestro): Observable<Siniestro> {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json'
+        'Content-Type':  'application/json',
+        'Access-Control-Allow-Origin': '*',
       })
     };
     return this.http.put<Siniestro>(this.baseURL + 'siniestros/' + siniestro.id, siniestro, httpOptions)
@@ -40,22 +53,12 @@ export class SiniestroService {
   }
 
   PushSiniestro(siniestro: Siniestro): Observable<Siniestro> {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json',
-      })
-    };
-    return this.http.post<Siniestro>(this.baseURL + 'siniestros/', siniestro, httpOptions)
+    return this.http.post<Siniestro>(this.baseURL + 'siniestros/', siniestro)
       .pipe(catchError(this.processHTTPMsgService.handleError));
   }
 
   DeleteSiniestro(id: number) {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json'
-      })
-    };
-    return this.http.delete(this.baseURL + 'siniestros/' + id, httpOptions)
+    return this.http.delete(this.baseURL + 'siniestros/' + id)
       .pipe(catchError(this.processHTTPMsgService.handleError));
   }
 }

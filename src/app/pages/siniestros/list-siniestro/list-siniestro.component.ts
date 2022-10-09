@@ -42,7 +42,18 @@ export class ListSiniestroComponent implements OnInit {
     this.SiniestroService.DeleteSiniestro(+id).subscribe(
       (errmess) => (this.errMess = <any>errmess)
     );
-    Swal.fire('Exito!', 'Se elimino los datos exitosamente!', 'success');
-    this.ngOnInit();
+    Swal
+      .fire({
+        title: 'Exito!',
+        text: 'Se elimino los datos exitosamente!',
+        icon: 'success',
+        timerProgressBar: true,
+        timer: 1500,
+      })
+      .then((result) => {
+        this.ngOnInit();;
+      });
+
+
   }
 }

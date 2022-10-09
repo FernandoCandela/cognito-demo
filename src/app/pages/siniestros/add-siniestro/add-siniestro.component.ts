@@ -1,6 +1,10 @@
 import { Component, OnInit, ViewChild, Inject } from '@angular/core';
 import { Params, ActivatedRoute, Router } from '@angular/router';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import {
+  UntypedFormBuilder,
+  UntypedFormGroup,
+  Validators,
+} from '@angular/forms';
 import { SiniestroService } from '../../../services/siniestro.service';
 import swal from 'sweetalert2';
 import { Siniestro } from 'src/app/shared/models/siniestro';
@@ -18,56 +22,60 @@ export class AddSiniestroComponent implements OnInit {
   savedsiniestro!: Siniestro;
 
   formErrors: { [char: string]: string } = {
-    'fecha': '',
-    'direccion': '',
-    'relato': '',
-    'compania': '',
-    'estimacion': '',
-    'tipo': '',
+    fecha: '',
+    direccion: '',
+    relato: '',
+    compania: '',
+    estimacion: '',
+    tipo: '',
   };
 
   validationMessages = {
-    'direccion': {
-      'required': 'Direccion is required.'
+    direccion: {
+      required: 'Direccion is required.',
     },
-    'relato': {
-      'required': 'Relato is required.'
+    relato: {
+      required: 'Relato is required.',
     },
-    'compania': {
-      'required': 'Compania is required.'
+    compania: {
+      required: 'Compania is required.',
     },
-    'estimacion': {
-      'required': 'Estimacion is required.',
-      'pattern':'Estimacion must contain only numbers.'
-    }
+    estimacion: {
+      required: 'Estimacion is required.',
+      pattern: 'Estimacion must contain only numbers.',
+    },
   };
 
   constructor(
     private siniestroservice: SiniestroService,
-    private cm: UntypedFormBuilder,private router: Router) {
-      this.createForm();
-    }
-
-  ngOnInit(): void {
-
+    private cm: UntypedFormBuilder,
+    private router: Router
+  ) {
+    this.createForm();
   }
+
+  ngOnInit(): void {}
   createForm() {
     this.siniestroForm = this.cm.group({
-      fecha: ['', [Validators.required] ],
-      direccion: ['', [Validators.required] ],
-      relato: ['', [Validators.required] ],
-      compania: ['', [Validators.required] ],
-      estimacion: ['', [Validators.required,Validators.pattern] ],
-      tipo:['', [Validators.required] ],
+      fecha: ['', [Validators.required]],
+      direccion: ['', [Validators.required]],
+      relato: ['', [Validators.required]],
+      compania: ['', [Validators.required]],
+      estimacion: ['', [Validators.required, Validators.pattern]],
+      tipo: ['', [Validators.required]],
     });
 
-    this.siniestroForm.valueChanges
-      .subscribe(data => this.onValueChanged(data));
+    this.siniestroForm.valueChanges.subscribe((data) =>
+      this.onValueChanged(data)
+    );
 
     this.onValueChanged();
+    this.getListSiniestros();
   }
   onValueChanged(data?: any) {
-    if (!this.siniestroForm) { return; }
+    if (!this.siniestroForm) {
+      return;
+    }
     const form = this.siniestroForm;
     for (const field in this.formErrors) {
       if (this.formErrors.hasOwnProperty(field)) {
@@ -84,11 +92,33 @@ export class AddSiniestroComponent implements OnInit {
       }
     }
   }
+
+  siniestrosList: Siniestro[] = [];
+  getListSiniestros() {
+    this.siniestroservice.getSiniestros()
+    .subscribe((siniestro) => {
+      this.siniestrosList = siniestro;
+    },
+    (errmess) => (this.errMess = <any>errmess));
+  }
+
+  getLastId() {
+    console.log(this.siniestrosList);
+    return Number(this.siniestrosList.pop()?.id) + 1;
+  }
+
   onSubmit() {
     this.siniestro = this.siniestroForm.value;
-    this.siniestro.id = '3';
-    this.siniestroservice.PushSiniestro(this.siniestro).subscribe(siniestro => {this.savedsiniestro = siniestro},
-      errmess => { this.siniestro == null; this.errMess = <any>errmess;});
+    this.siniestro.id = this.getLastId().toString();
+    this.siniestroservice.PushSiniestro(this.siniestro).subscribe(
+      (siniestro) => {
+        this.savedsiniestro = siniestro;
+      },
+      (errmess) => {
+        this.siniestro == null;
+        this.errMess = <any>errmess;
+      }
+    );
     console.log(this.siniestro);
     this.siniestroForm.reset({
       fecha: '',
@@ -96,10 +126,18 @@ export class AddSiniestroComponent implements OnInit {
       relato: '',
       compania: '',
       estimacion: '',
-      tipo:''
+      tipo: '',
     });
-    swal.fire('Exito!', 'Se registro el siniestro correctamente!', 'success');
-    this.router.navigate(['/list']);
-
+    swal
+      .fire({
+        title: 'Exito!',
+        text: 'Se registro el siniestro correctamente!',
+        icon: 'success',
+        timerProgressBar: true,
+        timer: 1500,
+      })
+      .then((result) => {
+        this.router.navigate(['/list']);
+      });
   }
 }
